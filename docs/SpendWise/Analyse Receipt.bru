@@ -1,0 +1,28 @@
+meta {
+  name: Analyse Receipt
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:8080/analyze-receipt
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "receipt-text": "data: 01/06/2025\n codigo descricao qnt valor\n 01 lampada 1 10,00\n 02 pano 2 20,00\n valor pago 30,00\n informacoes extras\n outras infos\n",
+    "categories": [
+      "Alimentacao",
+      "Entretenimento",
+      "Transporte",
+      "Casa",
+      "Educação"
+    ]
+  }
+}

@@ -1,4 +1,4 @@
-package domain
+package entities
 
 type Transaction struct {
 	Date        string `json:"date"`

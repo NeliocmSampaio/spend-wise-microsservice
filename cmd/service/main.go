@@ -1,13 +1,23 @@
 package main
 
 import (
-	"spendwise-microservice/internal/infrastructure/handler"
+	"fmt"
+	"spendwise-microservice/config"
+	"spendwise-microservice/internal/adapters/handler"
+	"spendwise-microservice/internal/di"
 
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
+	config := config.LoadConfig("../../config/config.local.yaml")
+	fmt.Println(config)
+
 	r := gin.Default()
-	handler.SetupRoutes(r)
-	r.Run(":8080") // Inicia o servidor na porta 8080
+
+	domainContainer := di.BuildDomainContainer(config)
+	entrypointsContainer := di.BuildEntrypointsContainer(domainContainer)
+
+	handler.SetupRoutes(r, domainContainer, entrypointsContainer)
+	r.Run(":8080")
 }

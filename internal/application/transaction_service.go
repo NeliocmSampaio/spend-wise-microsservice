@@ -1,30 +1,30 @@
 package application
 
-import (
-	"spendwise-microservice/internal/domain"
-	"spendwise-microservice/internal/infrastructure/repository"
-)
+// import (
+// 	repository "spendwise-microservice/internal/adapters/http"
+// 	"spendwise-microservice/internal/domain/entities"
+// )
 
-type TransactionService struct {
-	ChatGPTClient repository.ChatGPTClient
-}
+// type TransactionService struct {
+// 	ChatGPTClient repository.ChatGPTClient
+// }
 
-func (ts *TransactionService) AnalyzeText(receiptText string) (*domain.Transaction, error) {
-	response, err := ts.ChatGPTClient.AnalyzeReceipt(receiptText)
-	if err != nil {
-		return nil, err
-	}
+// func (ts *TransactionService) AnalyzeText(receiptText string) (*entities.Transaction, error) {
+// 	response, err := ts.ChatGPTClient.AnalyzeReceipt(receiptText)
+// 	if err != nil {
+// 		return nil, err
+// 	}
 
-	transaction := parseResponseToTransaction(response)
-	return transaction, nil
-}
+// 	transaction := parseResponseToTransaction(response)
+// 	return transaction, nil
+// }
 
-func parseResponseToTransaction(response string) *domain.Transaction {
-	// Simulação de parsing simples
-	return &domain.Transaction{
-		Date:        "2023-01-01",
-		Amount:      "100.00",
-		Description: "Compra de Mercado",
-		Category:    "Alimentos",
-	}
-}
+// func parseResponseToTransaction(response string) *entities.Transaction {
+// 	// Simulação de parsing simples
+// 	return &entities.Transaction{
+// 		Date:        "2023-01-01",
+// 		Amount:      "100.00",
+// 		Description: "Compra de Mercado",
+// 		Category:    "Alimentos",
+// 	}
+// }
